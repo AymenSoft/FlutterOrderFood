@@ -15,6 +15,8 @@ class FoodDetails extends StatefulWidget {
 
 class _FoodDetailsState extends State<FoodDetails> {
 
+  var selectedCard = "Weight";
+
   int requestQuantity = 1;
 
   final heroTag;
@@ -202,6 +204,11 @@ class _FoodDetailsState extends State<FoodDetails> {
                         ),
                       )
                     ],
+                  ),
+                  SizedBox(height: 20),
+                  Container(
+                    height: 150,
+                    child: weightCards(),
                   )
                 ],
               ),
@@ -210,6 +217,83 @@ class _FoodDetailsState extends State<FoodDetails> {
         )
       ],
     );
+  }
+
+  //create weight cards
+  ListView weightCards(){
+    return ListView(
+      scrollDirection: Axis.horizontal,
+      children: <Widget>[
+        weightCardItem("height", "100C", "kg"),
+        SizedBox(width: 10),
+        weightCardItem("low", "200C", "kg"),
+        SizedBox(width: 10),
+        weightCardItem("quantity", "300C", "kg"),
+        SizedBox(width: 10),
+        weightCardItem("quality", "400C", "kg"),
+        SizedBox(width: 10),
+        weightCardItem("sugar", "500C", "kg"),
+        SizedBox(width: 10),
+      ],
+    );
+  }
+
+  Widget weightCardItem(String title, String info, String unit){
+
+    return InkWell(
+      onTap: (){
+        selectCard(title);
+      },
+      child: AnimatedContainer(
+        width: 100,
+        height: 100,
+        duration: Duration(microseconds: 500),
+        curve: Curves.easeIn,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: title == selectedCard ? Color(0xff7A9BEE) : Colors.grey.withOpacity(0.2),
+            border: Border.all(
+              color: title == selectedCard ? Colors.transparent : Color(0xff7A9BEE),
+              style: BorderStyle.solid,
+              width: 0.75
+            )
+        ),
+        child: Container(
+          padding: EdgeInsets.all(10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                info,
+                style: TextStyle(
+                    fontFamily: 'Montserrat',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                    color: title == selectedCard ? Colors.white : Colors.grey
+                ),
+              ),
+              Text(
+                unit,
+                style: TextStyle(
+                    fontFamily: 'Montserrat',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                    color: title == selectedCard ? Colors.white : Colors.grey
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+
+  }
+
+  selectCard(title){
+    setState(() {
+      selectedCard = title;
+    });
   }
 
 }
