@@ -96,12 +96,12 @@ class _HomeScreenState extends State<HomeScreen> {
             height: MediaQuery.of(context).size.height - 230,
             child: ListView(
               children: <Widget>[
-                foodListItem("images/plate1.png", "dish 1", "20DT"),
-                foodListItem("images/plate2.png", "dish 2", "15DT"),
-                foodListItem("images/plate3.png", "dish 3", "30DT"),
-                foodListItem("images/plate4.png", "dish 4", "18DT"),
-                foodListItem("images/plate5.png", "dish 5", "25DT"),
-                foodListItem("images/plate6.png", "dish 6", "27DT"),
+                foodListItem(context, "images/plate1.png", "dish 1", "20DT"),
+                foodListItem(context, "images/plate2.png", "dish 2", "15DT"),
+                foodListItem(context, "images/plate3.png", "dish 3", "30DT"),
+                foodListItem(context, "images/plate4.png", "dish 4", "18DT"),
+                foodListItem(context, "images/plate5.png", "dish 5", "25DT"),
+                foodListItem(context, "images/plate6.png", "dish 6", "27DT"),
               ],
             ),
           ),
